@@ -285,6 +285,7 @@
     <div class="hot-maplist" v-if="isMyicon">
       <div class="show-hot">
         <p>我的标签</p>
+        <p  @click="deleteIcon('all')">删除所有标签</p>
         <img src="../../../static/img/ShutdownII.png" @click="closeMyicon" alt />
       </div>
       <div class="map-list">
@@ -294,7 +295,7 @@
             <p>{{ items.name }}</p>
             <div style="display: flex;">
               <p class="in-baidu" :class="items.type?'my-icon':''" @click="lookIcon(items.name,index)">查看</p>
-              <!-- <p style="color: red;font-size: 12px;cursor: pointer;" @click="dleteIcon(items.name)">删除</p> -->
+              <!-- <p style="color: red;font-size: 12px;cursor: pointer;width: 50px;height: 24px;line-height: 24px;" @click="dleteIcon(items.name)">删除</p> -->
             </div>
           </div>
         </div>
@@ -785,7 +786,8 @@
                     "宿州",
                     "铜陵",
                     "芜湖",
-                    "宣城"
+                    "宣城",
+                    "蚌埠"
                   ]
                 }
               ]
@@ -1691,7 +1693,7 @@
                 "通化",
                 "铁岭",
                 "通辽",
-                "泰安",
+                "秦安",
                 "太原",
                 "铜川",
                 "塔城地区",
@@ -1811,7 +1813,7 @@
                 "淄博",
                 "资阳",
                 "自贡",
-                "昭通",
+                "邵通",
                 "舟山"
               ]
             }
@@ -4718,11 +4720,11 @@ flex;justify-content: space-around;font-size: 14px;
         this.iconEdit = !this.iconEdit;
       },
       // 删除标签
-      deleteIcon() {
+      deleteIcon(logo) {
         let map = this.map;
         let that = this;
         let data = JSON.stringify({
-          labelId: this.labelId,
+          labelId: logo==="all"? this.iconList.labelName.map(el=>el.labelId):[...this.labelId],
           userId: this.userInfo.userId,
           token: this.userInfo.token
         });

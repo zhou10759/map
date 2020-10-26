@@ -80,9 +80,9 @@
             </div>
             <!-- 选择完城市出现的价格 -->
             <div class="prece-list" v-if="cityArray.length>0">
-              <div class="pay-money" :class="payDate==1?'active':''" @click="payMoneys(1)">
+              <div class="pay-money" :class="payDate==3?'active':''" @click="payMoneys(3)">
                 <div class="pay-pri">
-                  <p>{{monthMoney}}</p> /月
+                  <p>{{monthMoney}}</p> /季度
                 </div>
                 <!-- <select name="" id="" v-model="nameVal" @click="sureTime" class="select-time">
                   <option style="display:none;" selected class="select-key">{{nameVal}}</option>
@@ -447,9 +447,9 @@
       },
       payMoneys(e) {
         console.log(e)
-        if (e == 1) {
+        if (e == 3) {
           this.payNowMoney = this.monthMoney;
-          this.payDate = 1;
+          this.payDate = 3;
         } else if (e == 2) {
           this.payNowMoney = this.yearMoney;
           this.payDate = 12;
