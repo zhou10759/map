@@ -285,7 +285,7 @@
     <div class="hot-maplist" v-if="isMyicon">
       <div class="show-hot">
         <p>我的标签</p>
-        <p  @click="deleteIcon('all')">删除所有标签</p>
+        <p  @click="deleteIcon('all')" style="cursor:pointer;">删除所有标签</p>
         <img src="../../../static/img/ShutdownII.png" @click="closeMyicon" alt />
       </div>
       <div class="map-list">
@@ -4738,6 +4738,8 @@ flex;justify-content: space-around;font-size: 14px;
             $(".add-label1").css("display", "none");
             that.iconEdit = !that.iconEdit;
             that.getMyIcon();
+          }else{
+            this.$message.error(res.msg)
           }
         });
       },
