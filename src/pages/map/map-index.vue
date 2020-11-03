@@ -2684,6 +2684,7 @@
           strokeStyle: "solid" //边线的样式，solid或dashed。
         };
         //实例化鼠标绘制工具
+        // BMapGLLib
         var drawingManager = new BMapLib.DrawingManager(map, {
           isOpen: true, //是否开启绘制模式
           enableDrawingTool: false, //是否显示工具栏
@@ -2774,6 +2775,7 @@
       rectangle() {
         this.isArea = false;
         this.closingPoint = []; //将闭合点置为空先
+        // debugger
         // 关闭鼠标绘制模式
         if (this.drawingManager) {
           this.drawingManager.close();
@@ -2788,13 +2790,12 @@
         this.closingPoint = [];
         this.drawing();
         this.drawingManager.setDrawingMode(BMAP_DRAWING_RECTANGLE);
-        that.drawingManager.addEventListener("rectanglecomplete", function (
-          overlay
-        ) {
+        that.drawingManager.addEventListener("rectanglecomplete", function (overlay) {
+          // let { overlay } = e;
           //console.log("rect" + calculate);
           // 4个点坐标
-          //console.log("rect" + overlay);
-          console.log("rect" + JSON.stringify(overlay.to));
+          console.log("rect————————————————————————————" ,overlay);
+          // console.log("rect" + JSON.stringify(overlay.to));
           // 提供闭合点
           that.closingPoint = overlay.ia;
           console.log(overlay.ia);
